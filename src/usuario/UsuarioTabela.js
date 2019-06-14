@@ -16,6 +16,7 @@ export default class UsuarioTabela extends React.Component {
                 <td>{usuario.nome}</td>
                 <td>{usuario.login}</td>
                 <td>{usuario.email}</td>
+                <td>oi</td>
                 <td>
                     <button onClick={() => this.props.onApagar(usuario)}>Apagar</button>
                     <button>Editar</button>
