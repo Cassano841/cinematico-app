@@ -7,6 +7,7 @@ export default class UsuarioForm extends React.Component {
         this.state = {
             nome:"",
             login:"",
+            email:""
         }
     }
 
