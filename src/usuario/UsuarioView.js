@@ -8,7 +8,10 @@ export default class UsuarioView extends Component {
 
     constructor(){
         super();
-        this.state = { carregar:true };
+        this.state = { 
+          carregar:true, 
+          usuarioParaEditar: null
+         };
     }
 
     listar() {
@@ -21,8 +24,26 @@ export default class UsuarioView extends Component {
 
     apagar(usuario) {
       axios.delete(`/api/usuarios/${usuario.id}`).then(
-        () => this.listar()()
+        () => this.listar()
       );
+    }
+
+    cadastrar(usuario) {
+      axios.post("/api/usuarios/", usuario).then(
+        ()=>this.listar()
+      )
+    }
+
+    atualizar(usuario) {
+      axios.put("/api/usuarios/" + usuario.id, usuario).then(
+        ()=>this.listar()
+      )
+    }
+
+    editar(usuario) {
+      this.setState({
+        usuarioParaEditar:usuario
+      });
     }
 
     componentWillMount() {
@@ -31,10 +52,20 @@ export default class UsuarioView extends Component {
     
     render() {
         return <div>
-          <UsuarioForm /><br />
+          <UsuarioForm
+            key={this.state.usuarioParaEditar?
+                 this.state.usuarioParaEditar.id:"0"}
+            editar={this.state.usuarioParaEditar}
+            onCadastrar = {(usuario)=>this.cadastrar(usuario)}
+            onAtualizar = {(usuario)=>this.atualizar(usuario)}
+            onCancelar  = {()=>this.setState({usuarioParaEditar:null})}
+            />
+          <br />
+
           {this.state.carregar ? "Carregando..." :
           <UsuarioTabela
             itens = {this.state.usuarios}
+            onEditar = {(usuario) => this.editar(usuario)}
             onApagar = {(usuario) => this.apagar(usuario)}
           />}
         </div>

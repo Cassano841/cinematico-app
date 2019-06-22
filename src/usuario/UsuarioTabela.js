@@ -9,17 +9,20 @@ export default class UsuarioTabela extends React.Component {
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Login</th>
+                <th>Senha</th>
             </tr>
             {this.props.itens.map((usuario) => <tr key={usuario.id}>
                 <td>{usuario.id}</td>
                 <td>{usuario.nome}</td>
                 <td>{usuario.login}</td>
+                <td>{usuario.senha}</td>
                 <td>
                     <button onClick={() => this.props.onApagar(usuario)}>Apagar</button>
-                    <button>Editar</button>
+                    <button onClick={() => this.props.onEditar(usuario)}>Editar</button>
                 </td>
             </tr>
             )}
         </table>
+        
         }
 }
