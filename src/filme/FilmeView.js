@@ -35,7 +35,7 @@ export default class FilmeView extends Component {
     }
 
     atualizar(filme) {
-      axios.put("/api/filmes/"+filme.id, filme).then(
+      axios.put(`/api/filmes/${filme.id}`, filme).then(
         ()=>this.listar()
       )
     }

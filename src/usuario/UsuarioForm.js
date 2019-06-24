@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, Col } from 'react-bootstrap';
 
 export default class UsuarioForm extends React.Component {
 
@@ -49,35 +50,43 @@ export default class UsuarioForm extends React.Component {
     }
 
     render() {
-        return <fieldset>
-            <legend>Cadastrar Usuario:</legend>
-            <label>Nome:</label>
-                <input value={this.state.nome}
-                       onChange={(usuario) => this.setState({
-                            nome: usuario.target.value
-                    })}
-                /> <br />
-            <label>Login:</label>
-                <input value={this.state.login}
-                       onChange={(usuario) => this.setState({
-                            login: usuario.target.value
-                       })}
-                /> <br />
-            <label>Senha:</label>
-                <input value={this.state.senha}
-                       onChange={(usuario) => this.setState({
-                            senha: usuario.target.value
-                       })}
-                /> <br />
+        return <Form>
+            <Form.Group>
+                <h1>Cadastro de Usuário</h1>
+                <Form.Label column sm="2">Nome:</Form.Label>
+                <Col sm={7}>
+                    <Form.Control type="textarea" placeholder="Digite o seu nome" 
+                        value={this.state.nome}
+                        onChange={(usuario) => this.setState({
+                            nome: usuario.target.value})
+                        }/>
+                </Col>
+                <Form.Label column sm="2">Login:</Form.Label>
+                <Col sm={7}>
+                    <Form.Control type="textarea" placeholder="Digite o seu login" 
+                        value={this.state.login}
+                        onChange={(usuario) => this.setState({
+                            nome: usuario.target.value})
+                        }/>
+                </Col>
+                <Form.Label column sm="2">Senha:</Form.Label>
+                <Col sm={7}>
+                    <Form.Control type="textarea" placeholder="Digite a sua senha" 
+                        value={this.state.senha}
+                        onChange={(usuario) => this.setState({
+                            nome: usuario.target.value})
+                        }/>
+                </Col>
+                    <br />
+                <button
+                    disabled={this.state.nome === ""}
+                    onClick={() => this.confirmar()}
+                >{this.props.editar ? "Confirmar" : "Cadastrar"}</button>
 
-            <button 
-                disabled={this.state.nome === ""}
-                onClick={() => this.confirmar()}
-            >{this.props.editar ? "Confirmar" : "Cadastrar"}</button>
-            
-            <button
-                onClick={() => this.limpar()}
-            >{this.props.editar ? "Cancelar" : "Limpar"}</button>
-        </fieldset>
+                <button
+                    onClick={() => this.limpar()}
+                >{this.props.editar ? "Cancelar" : "Limpar"}</button>
+            </Form.Group>
+        </Form>
     }
 }

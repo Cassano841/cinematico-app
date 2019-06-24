@@ -1,16 +1,20 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import Table from 'react-bootstrap/Table';
 
 export default class UsuarioTabela extends React.Component {
 
     render() {
-        return <table border="1"> 
+        return <Table responsive size="md" striped bordered hover variant="dark">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Login</th>
                 <th>Senha</th>
+                <th colSpan="2">Ações</th>
             </tr>
+            </thead>
+            <tbody>
             {this.props.itens.map((usuario) => <tr key={usuario.id}>
                 <td>{usuario.id}</td>
                 <td>{usuario.nome}</td>
@@ -22,7 +26,8 @@ export default class UsuarioTabela extends React.Component {
                 </td>
             </tr>
             )}
-        </table>
+            </tbody>
+        </Table>
         
         }
 }
