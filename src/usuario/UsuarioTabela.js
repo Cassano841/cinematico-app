@@ -7,7 +7,7 @@ export default class UsuarioTabela extends React.Component {
         return <Table responsive size="md" striped bordered hover variant="dark">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Nome</th>
                 <th>Login</th>
                 <th>Senha</th>

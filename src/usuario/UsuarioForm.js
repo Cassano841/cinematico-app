@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 
 export default class UsuarioForm extends React.Component {
 
@@ -35,6 +35,7 @@ export default class UsuarioForm extends React.Component {
     confirmar() {
         if (this.props.editar) {
             this.props.onAtualizar({
+                id: this.props.editar.id,
                 nome: this.state.nome,
                 login: this.state.login,
                 senha: this.state.senha
@@ -66,26 +67,28 @@ export default class UsuarioForm extends React.Component {
                     <Form.Control type="textarea" placeholder="Digite o seu login" 
                         value={this.state.login}
                         onChange={(usuario) => this.setState({
-                            nome: usuario.target.value})
+                            login: usuario.target.value})
                         }/>
                 </Col>
                 <Form.Label column sm="2">Senha:</Form.Label>
                 <Col sm={7}>
-                    <Form.Control type="textarea" placeholder="Digite a sua senha" 
+                    <Form.Control type="password" placeholder="Digite a sua senha" 
                         value={this.state.senha}
                         onChange={(usuario) => this.setState({
-                            nome: usuario.target.value})
+                            senha: usuario.target.value})
                         }/>
                 </Col>
                     <br />
-                <button
+                <Button variant="primary"
                     disabled={this.state.nome === ""}
                     onClick={() => this.confirmar()}
-                >{this.props.editar ? "Confirmar" : "Cadastrar"}</button>
+                >{this.props.editar ? "Confirmar" : "Cadastrar"}
+                </Button>
 
-                <button
+                <Button variant="secondary"
                     onClick={() => this.limpar()}
-                >{this.props.editar ? "Cancelar" : "Limpar"}</button>
+                >{this.props.editar ? "Cancelar" : "Limpar"}
+                </Button>
             </Form.Group>
         </Form>
     }

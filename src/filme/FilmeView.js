@@ -3,6 +3,7 @@ import axios from 'axios';
 import FilmeTabela from './FilmeTabela';
 import FilmeForm from './FilmeForm';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Spinner } from 'react-bootstrap';
 
 export default class FilmeView extends Component {
 
@@ -22,12 +23,6 @@ export default class FilmeView extends Component {
         );
     }
 
-    apagar(filme) {
-      axios.delete(`/api/filmes/${filme.id}`).then(
-        () => this.listar()
-      );
-    }
-
     cadastrar(filme) {
       axios.post("/api/filmes/", filme).then(
         ()=>this.listar()
@@ -35,9 +30,15 @@ export default class FilmeView extends Component {
     }
 
     atualizar(filme) {
-      axios.put(`/api/filmes/${filme.id}`, filme).then(
+      axios.put("/api/filmes/"+filme.id, filme).then(
         ()=>this.listar()
       )
+    }
+
+    apagar(filme) {
+      axios.delete(`/api/filmes/${filme.id}`).then(
+        () => this.listar()
+      );
     }
 
     editar(filme) {
@@ -62,7 +63,13 @@ export default class FilmeView extends Component {
             />
           <br />
 
-          {this.state.carregar ? "Carregando..." :
+          {this.state.carregar ? <div>
+            <Container>
+              <Spinner animation="border" role="status">
+                <span className="sr-only">carregando...</span>
+              </Spinner>
+            </Container>
+          </div> :
           <FilmeTabela
             itens = {this.state.filmes}
             onEditar = {(filme) => this.editar(filme)}

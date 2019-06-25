@@ -1,5 +1,12 @@
 import React from 'react';
-import { Navbar, Nav, Button, ButtonGroup } from 'react-bootstrap';
+import {
+    Navbar,
+    Nav,
+    Button,
+    ButtonToolbar,
+    Form,
+    FormControl
+} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class Navegacao extends React.Component {
@@ -7,19 +14,31 @@ export default class Navegacao extends React.Component {
         return (
             <div>
                 <Navbar bg="dark" variant="dark">
-                    <LinkContainer to="/">
-                        <Button variant="warning">Home</Button>
-                    </LinkContainer>
-                    <ButtonGroup>
-                        <Nav className="mr-auto">
+                    <Nav className="mr-auto">
+                        <LinkContainer to="/">
+                            <Navbar.Brand variant="warning">Home</Navbar.Brand>
+                        </LinkContainer>
+                    </Nav>
+                    <Nav className="mr-auto">
+                        <ButtonToolbar>
                             <LinkContainer to="/usuarios">
-                                <Button variant="secondary">Usuários</Button>
+                                <Nav.Link>Usuários</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/filmes">
-                                <Button variant="secondary">Filmes</Button>
+                                <Nav.Link>Filmes</Nav.Link>
                             </LinkContainer>
-                        </Nav>
-                    </ButtonGroup>
+                            <LinkContainer to="/generos">
+                                <Nav.Link>Gêneros</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/produtoras">
+                                <Nav.Link>Produtoras</Nav.Link>
+                            </LinkContainer>
+                        </ButtonToolbar>
+                    </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Pesquisar" className="mr-sm-2" />
+                        <Button variant="outline-info">Pesquisar</Button>
+                    </Form>
                 </Navbar>
             </div>
 
