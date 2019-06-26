@@ -2,7 +2,7 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { Container, Button } from 'react-bootstrap';
 
-export default class UsuarioTabela extends React.Component {
+export default class GeneroTabela extends React.Component {
 
     render() {
         return <div>
@@ -12,20 +12,18 @@ export default class UsuarioTabela extends React.Component {
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>Login</th>
-                            <th>Senha</th>
+                            <th>Descrição</th>
                             <th colSpan="2">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.itens.map((usuario) => <tr key={usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>{usuario.nome}</td>
-                            <td>{usuario.login}</td>
-                            <td>{usuario.senha}</td>
+                        {this.props.itens.map((genero) => <tr key={genero.id}>
+                            <td>{genero.id}</td>
+                            <td>{genero.nomeGenero}</td>
+                            <td>{genero.descricaoGenero}</td>
                             <td>
-                                <Button variant="warning" onClick={() => this.props.onApagar(usuario)}>Apagar</Button>
-                                <Button variant="secondary" onClick={() => this.props.onEditar(usuario)}>Editar</Button>
+                                <Button variant="warning" onClick={() => this.props.onApagar(genero)}>Apagar</Button>
+                                <Button variant="secondary" onClick={() => this.props.onEditar(genero)}>Editar</Button>
                             </td>
                         </tr>
                         )}

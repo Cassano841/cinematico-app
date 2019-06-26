@@ -2,7 +2,7 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { Container, Button } from 'react-bootstrap';
 
-export default class UsuarioTabela extends React.Component {
+export default class ProdutoraTabela extends React.Component {
 
     render() {
         return <div>
@@ -12,20 +12,18 @@ export default class UsuarioTabela extends React.Component {
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>Login</th>
-                            <th>Senha</th>
+                            <th>Local</th>
                             <th colSpan="2">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.itens.map((usuario) => <tr key={usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>{usuario.nome}</td>
-                            <td>{usuario.login}</td>
-                            <td>{usuario.senha}</td>
-                            <td>
-                                <Button variant="warning" onClick={() => this.props.onApagar(usuario)}>Apagar</Button>
-                                <Button variant="secondary" onClick={() => this.props.onEditar(usuario)}>Editar</Button>
+                        {this.props.itens.map((produtora) => <tr key={produtora.id}>
+                            <td width="10%">{produtora.id}</td>
+                            <td width="50%">{produtora.nomeProdutora}</td>
+                            <td width="10%">{produtora.localProdutora}</td>
+                            <td width="30%">
+                                <Button variant="warning" onClick={() => this.props.onApagar(produtora)}>Apagar</Button>
+                                <Button variant="secondary" onClick={() => this.props.onEditar(produtora)}>Editar</Button>
                             </td>
                         </tr>
                         )}

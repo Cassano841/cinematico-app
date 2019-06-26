@@ -1,6 +1,5 @@
 import React from 'react';
-import { Table, Container } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+import { Table, Container, Button } from 'react-bootstrap';
 
 export default class FilmeTabela extends React.Component {
 
@@ -22,7 +21,7 @@ export default class FilmeTabela extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.itens.map((filme) => <tr key={filme.id}>
-                            <td>{filme.id}</td>
+                            <td >{filme.id}</td>
                             <td>{filme.nomeFilme}</td>
                             <td>{filme.duracaoFilme}</td>
                             <td>{filme.faixaEtaria}</td>
@@ -32,8 +31,8 @@ export default class FilmeTabela extends React.Component {
                             <td>{filme.produtora ? (
                                 filme.produtora.nomeProdutora) : ""}</td>
                             <td>
-                                <button onClick={() => this.props.onApagar(filme)}>Apagar</button>
-                                <button onClick={() => this.props.onEditar(filme)}>Editar</button>
+                                <Button variant="warning" onClick={() => this.props.onApagar(filme)}>Apagar</Button>
+                                <Button variant="secondary" onClick={() => this.props.onEditar(filme)}>Editar</Button>
                             </td>
                         </tr>
                         )}

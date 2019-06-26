@@ -16,7 +16,7 @@ export default class Navegacao extends React.Component {
                 <Navbar bg="dark" variant="dark">
                     <Nav className="mr-auto">
                         <LinkContainer to="/">
-                            <Navbar.Brand variant="warning">Home</Navbar.Brand>
+                            <Navbar.Brand>Home</Navbar.Brand>
                         </LinkContainer>
                     </Nav>
                     <Nav className="mr-auto">
@@ -36,8 +36,9 @@ export default class Navegacao extends React.Component {
                         </ButtonToolbar>
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Pesquisar" className="mr-sm-2" />
-                        <Button variant="outline-info">Pesquisar</Button>
+                        <FormControl type="text" placeholder="Pesquisar" className="mr-sm-2"
+                        />
+                        <Button variant="outline-warning">Pesquisar</Button>
                     </Form>
                 </Navbar>
             </div>

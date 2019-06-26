@@ -43,10 +43,11 @@ export default class UsuarioForm extends React.Component {
     }
 
     confirmar() {
+        /*
         let genero = this.props.generos.find(
             (genero) => genero.id === this.state.generoId
         );
-        /*
+        
         let produtora = this.props.produtoras.find(
             (produtora) => produtora.id === this.state.produtora
         )
@@ -58,7 +59,8 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
                 avaliacao: this.state.avaliacao,
-                genero: genero
+                genero: this.props.editar.genero ? 
+                        this.props.editar.genero.id : ""
                 //produtora: produtora
             });
         } else {
@@ -67,7 +69,8 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
                 avaliacao: this.state.avaliacao,
-                genero: genero
+                genero: this.props.editar.genero ? 
+                    this.props.editar.genero.id : ""
                 //produtora: produtora
             });
         }
@@ -135,7 +138,7 @@ export default class UsuarioForm extends React.Component {
                     
                     <br />
                     <div>
-                    <Button variant="primary"
+                    <Button variant="warning"
                         disabled={this.state.nomeFilme === ""}
                         onClick={() => this.confirmar()}
                     >{this.props.editar ? "Confirmar" : "Cadastrar"}

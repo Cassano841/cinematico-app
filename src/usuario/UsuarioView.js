@@ -3,6 +3,7 @@ import axios from 'axios';
 import UsuarioTabela from './UsuarioTabela';
 import UsuarioForm from './UsuarioForm';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Spinner } from 'react-bootstrap';
 
 export default class UsuarioView extends Component {
 
@@ -62,7 +63,13 @@ export default class UsuarioView extends Component {
             />
           <br />
 
-          {this.state.carregar ? "Carregando..." :
+          {this.state.carregar ? <div>
+            <Container>
+              <Spinner animation="border" role="status">
+                <span className="sr-only">carregando...</span>
+              </Spinner>
+            </Container>
+          </div> :
           <UsuarioTabela
             itens = {this.state.usuarios}
             onEditar = {(usuario) => this.editar(usuario)}

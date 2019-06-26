@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Container } from 'react-bootstrap';
 
 export default class UsuarioForm extends React.Component {
 
@@ -13,9 +13,9 @@ export default class UsuarioForm extends React.Component {
             }
         } else {
             this.state = {
-                nome:"",
-                login:"",
-                senha:""
+                nome: "",
+                login: "",
+                senha: ""
             }
         }
     }
@@ -25,9 +25,9 @@ export default class UsuarioForm extends React.Component {
             this.props.onCancelar();
         } else {
             this.setState({
-                nome:"",
-                login:"",
-                senha:""
+                nome: "",
+                login: "",
+                senha: ""
             });
         }
     }
@@ -44,52 +44,61 @@ export default class UsuarioForm extends React.Component {
             this.props.onCadastrar({
                 nome: this.state.nome,
                 login: this.state.login,
-                senha: this.state.senha                
+                senha: this.state.senha
             });
         }
         this.limpar();
     }
 
     render() {
-        return <Form>
-            <Form.Group>
-                <h1>Cadastro de Usuário</h1>
-                <Form.Label column sm="2">Nome:</Form.Label>
-                <Col sm={7}>
-                    <Form.Control type="textarea" placeholder="Digite o seu nome" 
-                        value={this.state.nome}
-                        onChange={(usuario) => this.setState({
-                            nome: usuario.target.value})
-                        }/>
-                </Col>
-                <Form.Label column sm="2">Login:</Form.Label>
-                <Col sm={7}>
-                    <Form.Control type="textarea" placeholder="Digite o seu login" 
-                        value={this.state.login}
-                        onChange={(usuario) => this.setState({
-                            login: usuario.target.value})
-                        }/>
-                </Col>
-                <Form.Label column sm="2">Senha:</Form.Label>
-                <Col sm={7}>
-                    <Form.Control type="password" placeholder="Digite a sua senha" 
-                        value={this.state.senha}
-                        onChange={(usuario) => this.setState({
-                            senha: usuario.target.value})
-                        }/>
-                </Col>
-                    <br />
-                <Button variant="primary"
-                    disabled={this.state.nome === ""}
-                    onClick={() => this.confirmar()}
-                >{this.props.editar ? "Confirmar" : "Cadastrar"}
-                </Button>
+        return <div>
+            <Container>
+                <Form>
+                    <Form.Group>
+                        <h1>Cadastro de Usuário</h1>
+                        <Form.Label column sm="2">Nome:</Form.Label>
+                        <Col sm={7}>
+                            <Form.Control type="textarea" placeholder="Digite o seu nome"
+                                value={this.state.nome}
+                                onChange={(usuario) => this.setState({
+                                    nome: usuario.target.value
+                                })
+                                } />
+                        </Col>
+                        <Form.Label column sm="2">Login:</Form.Label>
+                        <Col sm={7}>
+                            <Form.Control type="textarea" placeholder="Digite o seu login"
+                                value={this.state.login}
+                                onChange={(usuario) => this.setState({
+                                    login: usuario.target.value
+                                })
+                                } />
+                        </Col>
+                        <Form.Label column sm="2">Senha:</Form.Label>
+                        <Col sm={7}>
+                            <Form.Control type="password" placeholder="Digite a sua senha"
+                                value={this.state.senha}
+                                onChange={(usuario) => this.setState({
+                                    senha: usuario.target.value
+                                })
+                                } />
+                        </Col>
+                        <br />
+                        <div>
+                            <Button variant="warning"
+                                disabled={this.state.nome === ""}
+                                onClick={() => this.confirmar()}
+                            >{this.props.editar ? "Confirmar" : "Cadastrar"}
+                            </Button>
 
-                <Button variant="secondary"
-                    onClick={() => this.limpar()}
-                >{this.props.editar ? "Cancelar" : "Limpar"}
-                </Button>
-            </Form.Group>
-        </Form>
+                            <Button variant="secondary"
+                                onClick={() => this.limpar()}
+                            >{this.props.editar ? "Cancelar" : "Limpar"}
+                            </Button>
+                        </div>
+                    </Form.Group>
+                </Form>
+            </Container>
+        </div>
     }
 }
