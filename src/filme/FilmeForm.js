@@ -11,9 +11,11 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.props.editar.duracaoFilme,
                 faixaEtaria: this.props.editar.faixaEtaria,
                 avaliacao: this.props.editar.avaliacao,
+                dataLancamento: this.props.editar.dataLancamento,
                 generoId: this.props.editar.genero ? 
-                          this.props.editar.genero.id : ""
-                //produtora: this.props.editar.produtora ? this.props.editar.produtora.id : ""
+                          this.props.editar.genero.id : "",
+                produtora: this.props.editar.produtora ? 
+                           this.props.editar.produtora.id : ""
             }
         } else {
             this.state = {
@@ -21,8 +23,9 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: "",
                 faixaEtaria: "",
                 avaliacao: "",
-                generoId: ""
-                //produtora: ""
+                dataLancamento: "",
+                generoId: "",
+                produtora: ""
             }
         }
     }
@@ -36,22 +39,24 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: "",
                 faixaEtaria: "",
                 avaliacao: "",
-                generoId: ""
-                //produtora: ""
+                dataLancamento: "",
+                generoId: "",
+                produtora: ""
             });
         }
     }
 
     confirmar() {
-        /*
+        
         let genero = this.props.generos.find(
             (genero) => genero.id === this.state.generoId
         );
         
+        
         let produtora = this.props.produtoras.find(
             (produtora) => produtora.id === this.state.produtora
         )
-        */
+        
         if (this.props.editar) {
             this.props.onAtualizar({
                 id: this.props.editar.id,
@@ -59,9 +64,12 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
                 avaliacao: this.state.avaliacao,
-                genero: this.props.editar.genero ? 
-                        this.props.editar.genero.id : ""
-                //produtora: produtora
+                dataLancamento: this.state.dataLancamento,
+                genero: genero,
+                produtora: produtora
+                //this.props.editar.genero ? 
+                //this.props.editar.genero.id : ""
+                
             });
         } else {
             this.props.onCadastrar({
@@ -69,9 +77,12 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
                 avaliacao: this.state.avaliacao,
-                genero: this.props.editar.genero ? 
-                    this.props.editar.genero.id : ""
-                //produtora: produtora
+                dataLancamento: this.state.dataLancamento,
+                genero: genero,
+                produtora: produtora
+                //this.props.editar.genero ? 
+                //this.props.editar.genero.id : ""
+                
             });
         }
         this.limpar();
@@ -119,6 +130,15 @@ export default class UsuarioForm extends React.Component {
                             })
                             } />
                     </Col>
+                    <Form.Label column sm="2">Data Lançamento:</Form.Label>
+                    <Col sm={7}>
+                        <Form.Control type="date" placeholder="Informe a data de lançamento do filme"
+                            value={this.state.dataLancamento}
+                            onChange={(filme) => this.setState({
+                                dataLancamento: filme.target.value
+                            })
+                            } />
+                    </Col>
                     <Form.Label column sm="2">Gênero:</Form.Label>
                     <Col sm={7}>
                         <Form.Control as="select"
@@ -130,8 +150,23 @@ export default class UsuarioForm extends React.Component {
                             <option value="">None</option>
                             {
                                 this.props.generos && this.props.generos.map(
-                                    (genero) => 
-                                    <option key={genero.id} value={genero.id}>{genero.nomeGenero}</option>
+                                    (genero) =><option value={genero.id}>{genero.nomeGenero}</option>
+                            )}
+                        </Form.Control>
+                    </Col>
+                    <Form.Label column sm="2">Produtora:</Form.Label>
+                    <Col sm={7}>
+                        <Form.Control as="select"
+                            value={this.state.produtora}
+                            onChange = {(filme) => this.setState({
+                                produtora: filme.target.value
+                                })
+                            }>
+                            <option value="">None</option>
+                            {
+                                this.props.produtoras && this.props.produtoras.map(
+                                    (produtora) => 
+                                    <option value={produtora.id}>{produtora.nomeProdutora}</option>
                             )}
                         </Form.Control>
                     </Col>

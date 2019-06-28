@@ -33,13 +33,13 @@ export default class GeneroForm extends React.Component {
         if (this.props.editar) {
             this.props.onAtualizar({
                 id: this.props.editar.id,
-                nomeGenero: "",
-                descricaoGenero: ""
+                nomeGenero: this.state.nomeGenero,
+                descricaoGenero: this.state.descricaoGenero
             });
         } else {
             this.props.onCadastrar({
-                nomeGenero: "",
-                descricaoGenero: ""
+                nomeGenero: this.state.nomeGenero,
+                descricaoGenero: this.state.descricaoGenero
             });
         }
         this.limpar();

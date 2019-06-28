@@ -15,6 +15,20 @@ export default class FilmeView extends Component {
          };
     }
 
+    listarGeneros() {
+      axios.get("/api/generos/").then(
+        (retorno)=>this.setState({
+          generos:retorno.data})  
+      );
+    }
+
+    listarProdutoras() {
+      axios.get("/api/produtoras/").then(
+        (retorno)=>this.setState({
+          produtoras:retorno.data})
+      );
+    }
+
     listar() {
       axios.get("/api/filmes/").then(
         (retorno) => this.setState({
@@ -47,8 +61,10 @@ export default class FilmeView extends Component {
       });
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.listar();
+      this.listarGeneros();
+      this.listarProdutoras();
     }
     
     render() {
@@ -56,7 +72,9 @@ export default class FilmeView extends Component {
           <FilmeForm
             key={this.state.filmeParaEditar?
                  this.state.filmeParaEditar.id:"0"}
-            editar={this.state.filmeParaEditar}
+            editar      = {this.state.filmeParaEditar}
+            generos     = {this.state.generos}
+            produtoras  = {this.state.produtoras}
             onCadastrar = {(filme)=>this.cadastrar(filme)}
             onAtualizar = {(filme)=>this.atualizar(filme)}
             onCancelar  = {()=>this.setState({filmeParaEditar:null})}

@@ -26,13 +26,13 @@ export default class ProdutoraView extends Component {
     cadastrar(produtora) {
         axios.post("/api/produtoras/", produtora).then(
           ()=>this.listar()
-        )
+        );
     }
 
     atualizar(produtora) {
         axios.put("/api/produtoras/" + produtora.id, produtora).then(
           ()=>this.listar()
-        )
+        );
       }
 
     apagar(produtora) {

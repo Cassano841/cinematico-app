@@ -17,7 +17,7 @@ export default class GeneroView extends Component {
 
     listar() {
       axios.get("/api/generos/").then(
-        (retorno) => this.setState({
+        (retorno)=>this.setState({
           carregar: false,
           generos: retorno.data})
         );
@@ -26,13 +26,13 @@ export default class GeneroView extends Component {
     cadastrar(genero) {
         axios.post("/api/generos/", genero).then(
           ()=>this.listar()
-        )
+        );
     }
 
     atualizar(genero) {
         axios.put("/api/generos/" + genero.id, genero).then(
           ()=>this.listar()
-        )
+        );
       }
 
     apagar(genero) {

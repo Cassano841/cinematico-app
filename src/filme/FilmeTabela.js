@@ -14,6 +14,7 @@ export default class FilmeTabela extends React.Component {
                             <th>Duração</th>
                             <th>Faixa Etária</th>
                             <th>Avaliação</th>
+                            <th>Data Lançamento</th>
                             <th>Gênero</th>
                             <th>Produtora</th>
                             <th colSpan="2">Ações</th>
@@ -21,11 +22,12 @@ export default class FilmeTabela extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.itens.map((filme) => <tr key={filme.id}>
-                            <td >{filme.id}</td>
+                            <td>{filme.id}</td>
                             <td>{filme.nomeFilme}</td>
                             <td>{filme.duracaoFilme}</td>
                             <td>{filme.faixaEtaria}</td>
                             <td>{filme.avaliacao}</td>
+                            <td>{filme.dataLancamento}</td>
                             <td>{filme.genero ? (
                                 filme.genero.nomeGenero) : ""}</td>
                             <td>{filme.produtora ? (

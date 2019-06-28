@@ -33,13 +33,13 @@ export default class ProdutoraForm extends React.Component {
         if (this.props.editar) {
             this.props.onAtualizar({
                 id: this.props.editar.id,
-                nomeProdutora: "",
-                localProdutora: ""
+                nomeProdutora: this.state.nomeProdutora,
+                localProdutora: this.state.localProdutora
             });
         } else {
             this.props.onCadastrar({
-                nomeProdutora: "",
-                localProdutora: ""
+                nomeProdutora: this.state.nomeProdutora,
+                localProdutora: this.state.localProdutora
             });
         }
         this.limpar();
