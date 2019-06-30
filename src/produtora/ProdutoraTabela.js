@@ -18,10 +18,10 @@ export default class ProdutoraTabela extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.itens.map((produtora) => <tr key={produtora.id}>
-                            <td width="10%">{produtora.id}</td>
-                            <td width="50%">{produtora.nomeProdutora}</td>
-                            <td width="10%">{produtora.localProdutora}</td>
-                            <td width="30%">
+                            <td>{produtora.id}</td>
+                            <td>{produtora.nomeProdutora}</td>
+                            <td>{produtora.localProdutora}</td>
+                            <td>
                                 <Button variant="warning" onClick={() => this.props.onApagar(produtora)}>Apagar</Button>
                                 <Button variant="secondary" onClick={() => this.props.onEditar(produtora)}>Editar</Button>
                             </td>

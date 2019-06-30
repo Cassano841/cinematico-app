@@ -55,16 +55,16 @@ export default class FilmeView extends Component {
       );
     }
 
-    editar(filme) {
-      this.setState({
-        filmeParaEditar:filme
-      });
-    }
-
     componentDidMount() {
       this.listar();
       this.listarGeneros();
       this.listarProdutoras();
+    }
+
+    editar(filme) {
+      this.setState({
+        filmeParaEditar:filme
+      });
     }
     
     render() {

@@ -10,8 +10,7 @@ export default class UsuarioForm extends React.Component {
                 nomeFilme: this.props.editar.nomeFilme,
                 duracaoFilme: this.props.editar.duracaoFilme,
                 faixaEtaria: this.props.editar.faixaEtaria,
-                avaliacao: this.props.editar.avaliacao,
-                dataLancamento: this.props.editar.dataLancamento,
+                anoLancamento: this.props.editar.anoLancamento,
                 generoId: this.props.editar.genero ? 
                           this.props.editar.genero.id : "",
                 produtora: this.props.editar.produtora ? 
@@ -22,8 +21,7 @@ export default class UsuarioForm extends React.Component {
                 nomeFilme: "",
                 duracaoFilme: "",
                 faixaEtaria: "",
-                avaliacao: "",
-                dataLancamento: "",
+                anoLancamento: "",
                 generoId: "",
                 produtora: ""
             }
@@ -38,8 +36,7 @@ export default class UsuarioForm extends React.Component {
                 nomeFilme: "",
                 duracaoFilme: "",
                 faixaEtaria: "",
-                avaliacao: "",
-                dataLancamento: "",
+                anoLancamento: "",
                 generoId: "",
                 produtora: ""
             });
@@ -63,8 +60,7 @@ export default class UsuarioForm extends React.Component {
                 nomeFilme: this.state.nomeFilme,
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
-                avaliacao: this.state.avaliacao,
-                dataLancamento: this.state.dataLancamento,
+                anoLancamento: this.state.anoLancamento,
                 genero: genero,
                 produtora: produtora
                 //this.props.editar.genero ? 
@@ -77,7 +73,7 @@ export default class UsuarioForm extends React.Component {
                 duracaoFilme: this.state.duracaoFilme,
                 faixaEtaria: this.state.faixaEtaria,
                 avaliacao: this.state.avaliacao,
-                dataLancamento: this.state.dataLancamento,
+                anoLancamento: this.state.anoLancamento,
                 genero: genero,
                 produtora: produtora
                 //this.props.editar.genero ? 
@@ -89,6 +85,7 @@ export default class UsuarioForm extends React.Component {
     }
 
     render() {
+        console.log()
         return <div>
             <Container>
             <Form>
@@ -121,21 +118,12 @@ export default class UsuarioForm extends React.Component {
                             })
                             } />
                     </Col>
-                    <Form.Label column sm="2">Avaliação:</Form.Label>
+                    <Form.Label column sm="2">Ano de Lançamento:</Form.Label>
                     <Col sm={7}>
-                        <Form.Control type="number" placeholder="Digite a avaliação do filme"
-                            value={this.state.avaliacao}
+                        <Form.Control type="text" placeholder="Informe o ano de lançamento do filme"
+                            value={this.state.anoLancamento}
                             onChange={(filme) => this.setState({
-                                avaliacao: filme.target.value
-                            })
-                            } />
-                    </Col>
-                    <Form.Label column sm="2">Data Lançamento:</Form.Label>
-                    <Col sm={7}>
-                        <Form.Control type="date" placeholder="Informe a data de lançamento do filme"
-                            value={this.state.dataLancamento}
-                            onChange={(filme) => this.setState({
-                                dataLancamento: filme.target.value
+                                anoLancamento: filme.target.value
                             })
                             } />
                     </Col>
@@ -150,7 +138,7 @@ export default class UsuarioForm extends React.Component {
                             <option value="">None</option>
                             {
                                 this.props.generos && this.props.generos.map(
-                                    (genero) =><option value={genero.id}>{genero.nomeGenero}</option>
+                                    (genero) => <option value={genero.id}>{genero.nomeGenero}</option>
                             )}
                         </Form.Control>
                     </Col>
@@ -176,6 +164,7 @@ export default class UsuarioForm extends React.Component {
                     <Button variant="warning"
                         disabled={this.state.nomeFilme === ""}
                         onClick={() => this.confirmar()}
+                        
                     >{this.props.editar ? "Confirmar" : "Cadastrar"}
                     </Button>
                     <Button variant="secondary"

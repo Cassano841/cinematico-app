@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Table, Container, Button } from 'react-bootstrap';
 
 export default class FilmeTabela extends React.Component {
@@ -13,8 +14,7 @@ export default class FilmeTabela extends React.Component {
                             <th>Nome do Filme</th>
                             <th>Duração</th>
                             <th>Faixa Etária</th>
-                            <th>Avaliação</th>
-                            <th>Data Lançamento</th>
+                            <th>Ano Lançamento</th>
                             <th>Gênero</th>
                             <th>Produtora</th>
                             <th colSpan="2">Ações</th>
@@ -24,10 +24,9 @@ export default class FilmeTabela extends React.Component {
                         {this.props.itens.map((filme) => <tr key={filme.id}>
                             <td>{filme.id}</td>
                             <td>{filme.nomeFilme}</td>
-                            <td>{filme.duracaoFilme}</td>
-                            <td>{filme.faixaEtaria}</td>
-                            <td>{filme.avaliacao}</td>
-                            <td>{filme.dataLancamento}</td>
+                            <td>{filme.duracaoFilme} min</td>
+                            <td>{filme.faixaEtaria} anos</td>
+                            <td>{filme.anoLancamento}</td>
                             <td>{filme.genero ? (
                                 filme.genero.nomeGenero) : ""}</td>
                             <td>{filme.produtora ? (
